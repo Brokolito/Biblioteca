@@ -9,8 +9,7 @@ import java.awt.event.ActionListener;
 import java.util.Objects;
 
 public class buscaLibroView extends JFrame{
-    private JTextField tituloTextField;
-    private JComboBox comboBox1;
+    private JTextField autorTextField;
     private JButton buscarButton;
     private JButton cancelarButton;
     private JPanel panel;
@@ -28,12 +27,11 @@ public class buscaLibroView extends JFrame{
         buscarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String titulo=tituloTextField.getText();
-                String genero= Objects.requireNonNull(comboBox1.getSelectedItem()).toString();
-                if(!titulo.isEmpty() && !genero.isEmpty()){
+                String autor= autorTextField.getText();
+                if(!autor.isEmpty() ){
                     bibliotecaController bibliotecaController=new bibliotecaController();
                     int estado=1;
-                    bibliotecaController.buscarLibros(new Libro(titulo,"","",genero),true);
+                    bibliotecaController.buscarLibros(new Libro("",autor,"",""),true);
                 }else{
                     JOptionPane.showMessageDialog(
                             null,

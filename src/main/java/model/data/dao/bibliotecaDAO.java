@@ -60,9 +60,9 @@ public class bibliotecaDAO {
         ArrayList<Libro>librosEncontrados=new ArrayList<>();
         Table libros=table(name("libros"));
         Result result=query.select().from(libros).where(
-                DSL.field("titulo").eq(libro.getTitulo()).or(DSL.field("genero").eq(libro.getGenero()))
+                DSL.field("autor").eq(libro.getAutor()))
                         .and(DSL.field("stock").eq(estado))
-        ).fetch();
+        .fetch();
         for (int i = 0; i < result.size(); i++) {
             librosEncontrados.add(
                     new Libro(Objects.requireNonNull(result.getValue(i, "titulo")).toString(),
