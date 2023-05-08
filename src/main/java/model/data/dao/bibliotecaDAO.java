@@ -78,7 +78,7 @@ public class bibliotecaDAO {
     public ArrayList<Libro> obtenerLibros(DSLContext query,boolean estado){
         ArrayList<Libro>librosEncontrados=new ArrayList<>();
         Table libros=table(name("libros"));
-        Result result=query.select().from(libros).fetch();
+        Result result=query.select().from(libros).where(DSL.field("stock").eq(estado)).fetch();
         for (int i = 0; i < result.size(); i++) {
             librosEncontrados.add(
                     new Libro(Objects.requireNonNull(result.getValue(i, "titulo")).toString(),
@@ -101,6 +101,38 @@ public class bibliotecaDAO {
                 .and(DSL.field("autor").eq(autor)
                 .and(DSL.field("fecha").eq(fecha))
                 .and(DSL.field("stock").eq(estado)))
+                .execute();
+        return result==1;
+    }
+
+    public boolean prestarLibro(Libro libro,DSLContext query, boolean estado) {
+        String titulo=libro.getTitulo();
+        String autor=libro.getAutor();
+        System.out.println(autor);
+        String fecha=libro.getFechaPublicacion();
+        Table libros=table(name("libros"));
+        int result = query.update(libros)
+                .set(DSL.field("stock"), false)
+                .where(DSL.field("titulo").eq(titulo)
+                        .and(DSL.field("autor").eq(autor))
+                        .and(DSL.field("fecha").eq(fecha))
+                        .and(DSL.field("stock").eq(estado)))
+                .execute();
+        return result==1;
+    }
+
+    public boolean devolverLibro(Libro libro, DSLContext query, boolean estado) {
+        String titulo=libro.getTitulo();
+        String autor=libro.getAutor();
+        System.out.println(autor);
+        String fecha=libro.getFechaPublicacion();
+        Table libros=table(name("libros"));
+        int result = query.update(libros)
+                .set(DSL.field("stock"), true)
+                .where(DSL.field("titulo").eq(titulo)
+                        .and(DSL.field("autor").eq(autor))
+                        .and(DSL.field("fecha").eq(fecha))
+                        .and(DSL.field("stock").eq(!estado)))
                 .execute();
         return result==1;
     }

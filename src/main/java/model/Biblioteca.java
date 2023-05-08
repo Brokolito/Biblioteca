@@ -74,5 +74,16 @@ public class Biblioteca {
         return new bibliotecaDAO().obtenerLibros(query, estado);
     }
 
+    public boolean prestarLibro(Libro libro,boolean estado) {
+        Connection connection = DBConnector.connection("biblioteca", "root", "");
+        DSLContext query = DSL.using(connection);
+        return new bibliotecaDAO().prestarLibro(libro,query, estado);
     }
+
+    public boolean devolverLibro(Libro libro, boolean estado) {
+        Connection connection = DBConnector.connection("biblioteca", "root", "");
+        DSLContext query = DSL.using(connection);
+        return new bibliotecaDAO().devolverLibro(libro,query, estado);
+    }
+}
 

@@ -43,5 +43,19 @@ public class paginaPrincipalView extends JFrame{
                 dispose();
             }
         });
+        prestarLibroButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               new pedirLibroView();
+               dispose();
+            }
+        });
+        devolverLibroButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new devolverLibroView();
+                dispose();
+            }
+        });
     }
 }

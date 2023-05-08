@@ -39,5 +39,12 @@ public class buscaLibroView extends JFrame{
                 }
             }
         });
+        cancelarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new paginaPrincipalView();
+                dispose();
+            }
+        });
     }
 }
