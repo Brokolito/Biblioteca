@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 public class paginaPrincipalView extends JFrame{
     private JButton registrarLibroButton;
     private JButton eliminarLibroButton;
-    private JButton buscarUnLibroButton;
+    private JButton buscarLibroButton;
     private JButton prestarLibroButton;
     private JButton devolverLibroButton;
     private JPanel panel;
@@ -26,6 +26,13 @@ public class paginaPrincipalView extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 new agregarLibrosView();
+                dispose();
+            }
+        });
+        buscarLibroButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new buscaLibroView();
                 dispose();
             }
         });

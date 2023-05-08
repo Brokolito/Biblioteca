@@ -32,12 +32,12 @@
               <text value="Eliminar libro"/>
             </properties>
           </component>
-          <component id="811a7" class="javax.swing.JButton" binding="buscarUnLibroButton" default-binding="true">
+          <component id="811a7" class="javax.swing.JButton" binding="buscarLibroButton">
             <constraints>
               <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Buscar un libro"/>
+              <text value="Buscar libros"/>
             </properties>
           </component>
           <component id="ceee6" class="javax.swing.JButton" binding="prestarLibroButton" default-binding="true">

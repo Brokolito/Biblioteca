@@ -41,7 +41,13 @@
               <grid row="3" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <model/>
+              <model>
+                <item value=""/>
+                <item value="Drama"/>
+                <item value="Comedia"/>
+                <item value="Ciencia ficcion"/>
+                <item value="Romance"/>
+              </model>
             </properties>
           </component>
           <component id="f6865" class="javax.swing.JTextField" binding="diaTextField">

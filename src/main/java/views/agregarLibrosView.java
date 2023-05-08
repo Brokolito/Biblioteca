@@ -29,6 +29,7 @@ public class agregarLibrosView extends JFrame{
         setTitle("Agregar Libros");
         actionListener();
     }
+
     public void actionListener(){
         registrarButton.addActionListener(new ActionListener() {
             @Override
@@ -37,17 +38,22 @@ public class agregarLibrosView extends JFrame{
                 String autor=autorTextField.getText();
                 String genero= Objects.requireNonNull(generoComboBox.getSelectedItem()).toString();
                 int dia=Integer.parseInt(
-                        (!diaTextField.getText().matches("[0-9]+]") || diaTextField.getText().length()>2)
-                                ?"":diaTextField.getText()
+                        (!diaTextField.getText().matches("[0-9]+") || diaTextField.getText().length()>2)
+                                ?"0":diaTextField.getText()
                 );
                 int mes=Integer.parseInt(
                         (!mesTextField.getText().matches("[0-9]+") ||mesTextField.getText().length()>2)
-                        ?"":diaTextField.getText()
+                        ?"0":mesTextField.getText()
                 );
+                //(anio % 4 == 0 && anio % 100 != 0) || (anio % 100 == 0 && anio % 400 == 0) Para ver si el año es biciesto (K4muty Twitch)
+                if(mes==2 && dia>27 || dia>31 || mes > 12){
+                    dia=0;
+                }
                 int year= Integer.parseInt(
                         (!yearTextField.getText().matches("[0-9]+") || yearTextField.getText().length()!=4)
-                        ?"":yearTextField.getText()
+                        ?"0":yearTextField.getText()
                 );
+                System.out.println("DD:"+dia+" MM:"+mes+" YY:"+year);
                 if(!titulo.isEmpty() && !autor.isEmpty() && !genero.isEmpty() && dia!=0 && year!=0 && mes!=0){
                     String fecha=year+"-"+mes+"-"+dia;
                     bibliotecaController bibliotecaController=new bibliotecaController();
@@ -65,8 +71,18 @@ public class agregarLibrosView extends JFrame{
                         );
                     }
                 }else{
-                    JOptionPane.showMessageDialog(null,"Rellena todos los parametros");
+                    JOptionPane.showMessageDialog(
+                            null,
+                            "Rellena correctamente todos los parametros"
+                    );
                 }
+            }
+        });
+        cancelarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new paginaPrincipalView();
+                dispose();
             }
         });
     }
