@@ -30,8 +30,8 @@ public class buscaLibroView extends JFrame{
                 String autor= autorTextField.getText();
                 if(!autor.isEmpty() ){
                     bibliotecaController bibliotecaController=new bibliotecaController();
-                    int estado=1;
-                    bibliotecaController.buscarLibros(new Libro("",autor,"",""),true);
+
+                    bibliotecaController.buscarLibroAutor(new Libro("",autor,"",""),true);
                 }else{
                     JOptionPane.showMessageDialog(
                             null,

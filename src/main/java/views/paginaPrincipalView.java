@@ -36,5 +36,12 @@ public class paginaPrincipalView extends JFrame{
                 dispose();
             }
         });
+        eliminarLibroButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new eliminarLibroView();
+                dispose();
+            }
+        });
     }
 }

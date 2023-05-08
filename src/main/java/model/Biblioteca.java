@@ -57,9 +57,22 @@ public class Biblioteca {
         DSLContext query= DSL.using(connection);
         return libroDAO.agregarLibro(query, libro);
     }
-    public ArrayList<Libro> buscarLibros(Libro libro, boolean estado){
+    public ArrayList<Libro> buscarLibroAutor(Libro libro, boolean estado){
         Connection connection= DBConnector.connection("biblioteca","root","");
         DSLContext query= DSL.using(connection);
-        return new bibliotecaDAO().buscarLibros(query,libro,estado);
+        return new bibliotecaDAO().buscarLibroAutor(query,libro,estado);
     }
-}
+
+    public boolean eliminarLibro(Libro libro, boolean estado) {
+        Connection connection= DBConnector.connection("biblioteca","root","");
+        DSLContext query= DSL.using(connection);
+        return new bibliotecaDAO().eliminarLibro(query,libro,estado);
+    }
+    public ArrayList<Libro> obtenerLibros(boolean estado) {
+        Connection connection = DBConnector.connection("biblioteca", "root", "");
+        DSLContext query = DSL.using(connection);
+        return new bibliotecaDAO().obtenerLibros(query, estado);
+    }
+
+    }
+
